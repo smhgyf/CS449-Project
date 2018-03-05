@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation= "vertical">
+
+
+    <TextView
+        android:id="@+id/novel_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Novel Title" />
+
+    <Button
+        android:id="@+id/step_idea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Step 1: Idea"
+        android:visibility="invisible"
+        android:onClick="updateStepOne"/>
+    <Button
+        android:id="@+id/step_idea_expansion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Step 2: Idea Expansion"
+        android:visibility="invisible"
+        android:onClick="updateStepTwo"/>
+    <Button
+        android:id="@+id/step_character_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Step 3: Character Sheet"
+        android:visibility="invisible"
+        android:onClick="updateStepThree"/>
+    <Button
+        android:id="@+id/step_novel_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Step 4: Novel Summary"
+        android:visibility="invisible"
+        android:onClick="updateStepFour"/>
+    <Button
+        android:id="@+id/step_character_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Step 5: Character Summary"
+        android:visibility="invisible"
+        android:onClick="updateStepFive"/>
+    <Button
+        android:id="@+id/step_novel_summary_expansion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="Step 6: Novel Summary Expansion"
+        android:visibility="invisible"
+        android:onClick="updateStepSix"/>
+
+</LinearLayout>

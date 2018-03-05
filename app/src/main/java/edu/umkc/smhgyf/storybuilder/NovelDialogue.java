@@ -10,11 +10,16 @@ import android.support.v4.app.FragmentManager;
 
 
 
-/**
+/*
  * Created by Sean on 2/14/2018.
+ * UPDATE: This class may be deprecated in the future.
+ * I had originally separated this dialog from main,
+ * but have no decided to include the dialog in main
+ * for simplicities sake.
  */
 
 public class NovelDialogue extends DialogFragment {
+    private boolean startNovel = false;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
@@ -24,8 +29,7 @@ public class NovelDialogue extends DialogFragment {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Will open an idea dialogue.
-                        DialogFragment firstStepDialog = new StepDialogue();
-                        firstStepDialog.show(getActivity().getSupportFragmentManager(),"firstStepDialogue");
+                        startNovel = true;
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -33,7 +37,9 @@ public class NovelDialogue extends DialogFragment {
                         // User cancelled the dialog
                     }
                 });
-        // Create the AlertDialog object and return it
         return builder.create();
+    }
+    public boolean getStartNovel(){
+        return this.startNovel;
     }
 }
