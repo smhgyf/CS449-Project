@@ -1,65 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation= "vertical">
+    android:layout_height="match_parent">
 
 
     <TextView
         android:id="@+id/novel_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Novel Title" />
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Novel Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/step_idea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Step 1: Idea"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="65dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="updateStepOne"
+        android:text="Idea"
         android:visibility="invisible"
-        android:onClick="updateStepOne"/>
+        app:layout_constraintBottom_toTopOf="@+id/step_novel_summary_expansion"
+        app:layout_constraintEnd_toStartOf="@+id/step_character_summary"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/step_character_sheet"
+        app:layout_constraintTop_toBottomOf="@+id/step_character_summary_expansion"
+        app:layout_constraintVertical_bias="0.512" />
+
     <Button
         android:id="@+id/step_idea_expansion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Step 2: Idea Expansion"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="115dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="updateStepTwo"
+        android:text="Idea Expansion"
         android:visibility="invisible"
-        android:onClick="updateStepTwo"/>
+        app:layout_constraintBottom_toTopOf="@+id/step_novel_summary_expansion"
+        app:layout_constraintEnd_toStartOf="@+id/step_idea"
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/step_character_summary_expansion" />
+
     <Button
         android:id="@+id/step_character_sheet"
-        android:layout_width="match_parent"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="134dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Step 3: Character Sheet"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="updateStepThree"
+        android:text="Character Sheet"
         android:visibility="invisible"
-        android:onClick="updateStepThree"/>
+        app:layout_constraintBottom_toTopOf="@+id/step_idea_expansion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/step_character_summary_expansion" />
+
     <Button
         android:id="@+id/step_novel_summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Step 4: Novel Summary"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="134dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="updateStepFour"
+        android:text="Novel Summary"
         android:visibility="invisible"
-        android:onClick="updateStepFour"/>
+        app:layout_constraintBottom_toTopOf="@+id/step_novel_summary_expansion"
+        app:layout_constraintEnd_toStartOf="@+id/step_idea"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/step_idea_expansion" />
+
     <Button
         android:id="@+id/step_character_summary"
-        android:layout_width="match_parent"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="154dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Step 5: Character Summary"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:onClick="updateStepFive"
+        android:text="Character Summary"
         android:visibility="invisible"
-        android:onClick="updateStepFive"/>
+        app:layout_constraintBottom_toTopOf="@+id/step_scene_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/step_character_summary_expansion" />
+
     <Button
         android:id="@+id/step_novel_summary_expansion"
-        android:layout_width="match_parent"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="204dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:text="Step 6: Novel Summary Expansion"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="updateStepSix"
+        android:text="Novel Summary Expansion"
         android:visibility="invisible"
-        android:onClick="updateStepSix"/>
+        app:layout_constraintBottom_toTopOf="@+id/step_first_draft"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/step_character_summary_expansion"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="updateStepSeven"
+        android:text="Character Summary Expansion"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/novel_title" />
+
+    <Button
+        android:id="@+id/step_scene_layout"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="116dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:onClick="updateStepEight"
+        android:text="Scene Layout"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/step_novel_summary_expansion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toEndOf="@+id/step_idea"
+        app:layout_constraintTop_toBottomOf="@+id/step_character_summary_expansion"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <Button
+        android:id="@+id/step_scene_expansion"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="144dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="updateStepNine"
+        android:text="Scene Expansion"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/step_novel_summary_expansion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/step_idea"
+        app:layout_constraintTop_toBottomOf="@+id/step_scene_layout" />
+
+    <Button
+        android:id="@+id/step_first_draft"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="updateStepTen"
+        android:text="First Draft"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
