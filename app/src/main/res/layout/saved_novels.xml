@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/novel1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelOneActivity"
+            />
+
+        <Button
+            android:id="@+id/novel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelTwoActivity"
+            />
+
+        <Button
+            android:id="@+id/novel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelThreeActivity"
+            />
+
+        <Button
+            android:id="@+id/novel4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelFourActivity"
+            />
+
+        <Button
+            android:id="@+id/novel5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelFiveActivity"
+            />
+
+        <Button
+            android:id="@+id/novel6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelSixActivity"
+            />
+
+        <Button
+            android:id="@+id/novel7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="invisible"
+            android:onClick = "openNovelSevenActivity"
+            />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

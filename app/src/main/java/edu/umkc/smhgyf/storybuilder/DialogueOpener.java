@@ -23,6 +23,7 @@ import java.lang.String;
  */
 
 public class DialogueOpener extends AppCompatActivity {
+    String novelStorage;
     EditText ideaText;
     Button stepOneButton;
     Button stepTwoButton;
@@ -34,6 +35,7 @@ public class DialogueOpener extends AppCompatActivity {
     Button stepEightButton;
     Button stepNineButton;
     Button stepTenButton;
+    String novelTitleString = "";
     String stepOneString = "";
     String stepTwoString = "";
     String stepThreeString = "";
@@ -54,14 +56,45 @@ public class DialogueOpener extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snowflake_novel);
-        novelContext = getContext();
-        if (novelContext > 0){
+        novelTitleString = getNovelTitle();
+        if (novelTitleString != ""){
             isSavedInstance = true;
         }
         if (isSavedInstance == true){
+            novelContext = getContext();
             loadNovel();
+            openStepDialogue();
         }
-        openStepDialogue();
+        else{
+            openNovelDialogue();
+        }
+
+    }
+    public void openNovelDialogue(){
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_step, null);
+        ideaText = (EditText) view.findViewById(R.id.idea_text);
+
+        AlertDialog.Builder novelDialog = new AlertDialog.Builder(this);
+        novelDialog.setTitle("New Novel");
+
+        novelDialog.setView(view)
+                .setMessage("Please give your novel a title (This can be edited later)")
+                .setCancelable(false)
+                .setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        saveNovel();
+                        openStepDialogue();
+                    }
+                })
+                .setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = novelDialog.create();
+        alertDialog.show();
     }
     public void openStepDialogue(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -303,73 +336,97 @@ public class DialogueOpener extends AppCompatActivity {
         contextSwitched = false;
         openStepDialogue();
     }
+
+    
+    public void saveNovel(){
+        int novelCount = getNovelCount();
+        novelCount += 1;
+        SharedPreferences novelCountFile = getSharedPreferences("novelCount", Context.MODE_PRIVATE);
+        SharedPreferences.Editor novelCountFileEditor = novelCountFile.edit();
+        novelCountFileEditor.putInt("count", novelCount);
+        novelCountFileEditor.apply();
+
+        novelStorage = "Novel " + String.valueOf(novelCount);
+        novelTitleString = ideaText.getText().toString();
+        ideaText.setText("");
+        SharedPreferences novelFile = getSharedPreferences(novelStorage, Context.MODE_PRIVATE);
+        SharedPreferences.Editor novelFileEditor = novelFile.edit();
+        novelFileEditor.putString("novelTitleString", novelTitleString);
+        novelFileEditor.apply();
+    }
+
+    public int getNovelCount(){
+        SharedPreferences novelCountFile = getSharedPreferences("novelCount", Context.MODE_PRIVATE);
+        return novelCountFile.getInt("count", 0);
+    }
+
     public void saveStepText(){
         if (context == 1) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepOneString", stepOneString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 2) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepTwoString", stepTwoString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 3) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepThreeString", stepThreeString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 4) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepFourString", stepFourString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 5) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepFiveString", stepFiveString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 6) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepSixString", stepSixString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 7) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepSevenString", stepSevenString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 8) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepEightString", stepEightString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 9) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepNineString", stepNineString);
             fileEditor.apply();
             saveContext(context);
         }
         if (context == 10) {
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            SharedPreferences.Editor fileEditor = stepsFile.edit();
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            SharedPreferences.Editor fileEditor = novelFile.edit();
             fileEditor.putString("stepTenString", stepTenString);
             fileEditor.apply();
             saveContext(context);
@@ -378,56 +435,67 @@ public class DialogueOpener extends AppCompatActivity {
     }
     public String getStepText(){
         if (context == 1){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepOneString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepOneString", "");
         }
         if (context == 2){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepTwoString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepTwoString", "");
         }
         if (context == 3){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepThreeString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepThreeString", "");
         }
         if (context == 4){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepFourString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepFourString", "");
         }
         if (context == 5){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepFiveString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepFiveString", "");
         }
         if (context == 6){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepSixString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepSixString", "");
         }
         if (context == 7){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepSevenString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepSevenString", "");
         }
         if (context == 8){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepEightString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepEightString", "");
         }
         if (context == 9){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepNineString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepNineString", "");
         }
         if (context == 10){
-            SharedPreferences stepsFile = getSharedPreferences("steps", Context.MODE_PRIVATE);
-            return stepsFile.getString("stepTenString", "");
+            SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+            return novelFile.getString("stepTenString", "");
         }
         return "";
     }
     public void saveContext(int novelContext) {
-        SharedPreferences contextFile = getSharedPreferences("context", Context.MODE_PRIVATE);
-        SharedPreferences.Editor fileEditor = contextFile.edit();
+        SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+        SharedPreferences.Editor fileEditor = novelFile.edit();
         fileEditor.putInt("novelContext", novelContext);
         fileEditor.apply();
     }
     public int getContext(){
-        SharedPreferences contextFile = getSharedPreferences("context", Context.MODE_PRIVATE);
-        return contextFile.getInt("novelContext", 0);
+        SharedPreferences novelFile = getSharedPreferences(novelTitleString, Context.MODE_PRIVATE);
+        return novelFile.getInt("novelContext", 0);
+    }
+    public String getNovelTitle(){
+        Bundle activityExtras = getIntent().getExtras();
+        novelStorage = activityExtras.getString("novelStorageContext");
+        if (novelStorage != "") {
+            SharedPreferences novelFile = getSharedPreferences(novelStorage, Context.MODE_PRIVATE);
+            return novelFile.getString("novelTitle", "");
+        }
+        else{
+            return "";
+        }
     }
     public void loadNovel(){
         stepOneButton = (Button) findViewById(R.id.step_idea);
