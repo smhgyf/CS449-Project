@@ -97,82 +97,215 @@ public class DialogueOpener extends AppCompatActivity {
         alertDialog.show();
     }
     public void openStepDialogue(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_step, null);
-        ideaText = (EditText) view.findViewById(R.id.idea_text);
+        if (context != 3){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            LayoutInflater inflater = this.getLayoutInflater();
 
-        if (context == 1){
-            builder.setMessage("Step " + Integer.toString(context) + ": Idea");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 2){
-            builder.setMessage("Step " + Integer.toString(context) + ": Idea Expansion");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 3){
-            builder.setMessage("Step " + Integer.toString(context) + ": Character Sheet");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 4){
-            builder.setMessage("Step " + Integer.toString(context) + ": Novel Summary");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 5){
-            builder.setMessage("Step " + Integer.toString(context) + ": Character Synopsis");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 6) {
-            builder.setMessage("Step " + Integer.toString(context) + ": Novel Summary Expansion");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 7) {
-            builder.setMessage("Step " + Integer.toString(context) + ": Character Summary Expansion");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 8) {
-            builder.setMessage("Step " + Integer.toString(context) + ": Scene Layout");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 9) {
-            builder.setMessage("Step " + Integer.toString(context) + ": Scene Expansion");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        else if (context == 10) {
-            builder.setMessage("Step " + Integer.toString(context) + ": First Draft");
-            builder.setTitle("Snowflake Method");
-            ideaText.setText(getStepText());
-        }
-        builder.setView(view)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (firstStepInitialized == false){
-                            initializeFirstStep();
-                            displaySteps();
-                        }
-                        else {
-                            displaySteps();
-                        }
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+            if (context == 1){
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                ideaText = (EditText) view.findViewById(R.id.idea_text);
+                builder.setMessage("Step " + Integer.toString(context) + ": Idea");
+                builder.setTitle("Snowflake Method");
+                ideaText.setText(getStepText());
+                builder.setView(view)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                    }
-                });
+                            }
+                        });
+            }
+            else if (context == 2){
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                ideaText = (EditText) view.findViewById(R.id.idea_text);
+                builder.setMessage("Step " + Integer.toString(context) + ": Idea Expansion");
+                builder.setTitle("Snowflake Method");
+                ideaText.setText(getStepText());
+                builder.setView(view)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+                            }
+                        });
+            }
+            else if (context == 4){
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                ideaText = (EditText) view.findViewById(R.id.idea_text);
+                builder.setMessage("Step " + Integer.toString(context) + ": Novel Summary");
+                builder.setTitle("Snowflake Method");
+                ideaText.setText(getStepText());
+                builder.setView(view)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
+                            }
+                        });
+            }
+            else if (context == 5){
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                ideaText = (EditText) view.findViewById(R.id.idea_text);
+                builder.setMessage("Step " + Integer.toString(context) + ": Character Synopsis");
+                builder.setTitle("Snowflake Method");
+                ideaText.setText(getStepText());
+                builder.setView(view)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+            }
+            else if (context == 6) {
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                builder.setMessage("Step " + Integer.toString(context) + ": Novel Summary Expansion- Take your story paragraph and characters and write a one page summary expansion of your story!");
+                builder.setTitle("Snowflake Method");
+                builder.setView(view)
+                        .setNeutralButton("Continue", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        });
+            }
+            else if (context == 7) {
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                ideaText = (EditText) view.findViewById(R.id.idea_text);
+                builder.setMessage("Step " + Integer.toString(context) + ": Character Summary Expansion");
+                builder.setTitle("Snowflake Method");
+                ideaText.setText(getStepText());
+                builder.setView(view)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+            }
+            else if (context == 8) {
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                builder.setMessage("Step " + Integer.toString(context) + ": Scene Layout- Using a spreedsheet program, make one line summary of every scene you want in your book!");
+                builder.setTitle("Snowflake Method");
+                builder.setView(view)
+                        .setNeutralButton("Continue", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        });
+            }
+            else if (context == 9) {
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                ideaText = (EditText) view.findViewById(R.id.idea_text);
+                builder.setMessage("Step " + Integer.toString(context) + ": Scene Expansion");
+                builder.setTitle("Snowflake Method");
+                ideaText.setText(getStepText());
+                builder.setView(view)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+            }
+            else if (context == 10) {
+                View view = inflater.inflate(R.layout.dialog_step, null);
+                builder.setMessage("Step " + Integer.toString(context) + ": First Draft- Congratulations! Now it's time to take your character sheets, summary and scenes and start your first draft! Good Luck!");
+                builder.setTitle("Snowflake Method");
+                builder.setView(view)
+                        .setNeutralButton("Continue", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (firstStepInitialized == false){
+                                    initializeFirstStep();
+                                    displaySteps();
+                                }
+                                else {
+                                    displaySteps();
+                                }
+                            }
+                        });
+            }
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+        else if (context == 3) {
+            setContentView(R.layout.character_sheet);
+            //builder.setMessage("Step " + Integer.toString(context) + ": Character Sheet");
+            //builder.setTitle("Snowflake Method");
+            //ideaText.setText(getStepText());
+        }
     }
     public void initializeFirstStep() {
         stepOneButton = (Button) findViewById(R.id.step_idea);
@@ -207,7 +340,7 @@ public class DialogueOpener extends AppCompatActivity {
                 stepThreeButton.setVisibility(View.VISIBLE);
             }
         }
-        if (contextSwitched == false) {
+        /*if (contextSwitched == false) {
             if (context == 3){
                 stepThreeString = ideaText.getText().toString();
                 ideaText.setText("");
@@ -216,7 +349,7 @@ public class DialogueOpener extends AppCompatActivity {
                 stepFourButton = (Button) findViewById(R.id.step_novel_summary);
                 stepFourButton.setVisibility(View.VISIBLE);
             }
-        }
+        }*/
         if (contextSwitched == false) {
             if (context == 4){
                 stepFourString = ideaText.getText().toString();
@@ -538,5 +671,25 @@ public class DialogueOpener extends AppCompatActivity {
         if (novelContext > 9) {
             stepTenButton.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void saveCharacters(View view){
+        setContentView(R.layout.characters);
+    }
+    public void getCharacterSheet(View view){
+        setContentView(R.layout.character_sheet);
+    }
+    public void returnToSnowflake(View view){
+        contextSwitched = true;
+        setContentView(R.layout.activity_snowflake_novel);
+
+        stepOneButton = (Button) findViewById(R.id.step_idea);
+        stepOneButton.setVisibility(View.VISIBLE);
+        stepTwoButton = (Button) findViewById(R.id.step_idea_expansion);
+        stepTwoButton.setVisibility(View.VISIBLE);
+        stepThreeButton = (Button) findViewById(R.id.step_character_sheet);
+        stepThreeButton.setVisibility(View.VISIBLE);
+        stepFourButton = (Button) findViewById(R.id.step_novel_summary);
+        stepFourButton.setVisibility(View.VISIBLE);
     }
 }
